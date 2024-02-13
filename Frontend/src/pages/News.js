@@ -2,6 +2,8 @@ import React from "react"
 import Header from "../components/header"
 import { useState, useEffect } from "react";
 import { ApiService } from "../services/ApiService";
+import '../css/News.css'
+
 
 const News = () => {
   const [newsline, setNewsLine] = useState([]);
@@ -52,19 +54,26 @@ const News = () => {
   return (
     <div>
       <Header title = "Новости" />
-      <form>
+      <form className="message_form">
         <label>Сообщение:</label>
-        <input
-          type="text"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        />
-        <button onClick={handleSubmit}>Добавить</button>
+        <div>
+          <input
+            className="message_form_input"
+            type="text"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
+        </div>
+        <div>
+          <button onClick={handleSubmit}>Добавить</button>
+        </div>
       </form>
       <ul>
         {newsline.map((news) => (
           <li key={news.user_first_name}>
-            {news.user_first_name} {news.user_last_name}: {news.message}
+            <div className="text">
+              {news.user_first_name} {news.user_last_name}: {news.message}
+            </div>
           </li>
         ))}
       </ul>

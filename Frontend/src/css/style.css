@@ -1,9 +1,12 @@
-body {
-    background-image: linear-gradient(to bottom right, #EDC7B7, #EDE7B7);
-    font-size: 30px;
+html {
+    background:#EDC7B7;
+    font-size: 20px;
     font-family: 'Roboto', sans-serif;
-    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100%;
 }
+
 
 .header {
     background-color: #123C69;
@@ -27,9 +30,28 @@ body {
     color: #123C69;
   }
 
+  .header_button {
+    background-color: #123C69;
+    float: right;
+    color: #EDE7B7;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+  }
 
-h1 {
+
+.title_1 {
     font-family: 'Caveat', cursive;
     text-align: center;
+}
+
+button {
+  background-color: #123C69;
+  color: #EDE7B7;
+  font-size: 18px;
+  margin: 5px;
 }
 

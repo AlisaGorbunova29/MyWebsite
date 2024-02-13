@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/header";
 import { ApiService } from "../services/ApiService";
+import '../css/Deadline.css'
 
 const Deadlines = () => {
   const [deadlines, setDeadlines] = useState([]);
@@ -60,56 +61,81 @@ const Deadlines = () => {
   };
 
   return (
-    <div>
+    <>
       <Header title="Мои дедлайны" />
-      <form>
-        <label htmlFor="subject">Предмет:</label>
-        <input
-          type="text"
-          id="subject"
-          value={subject}
-          onChange={(e) => setSubject(e.target.value)}
-        />
-        <label htmlFor="deadline">Дедлайн:</label>
-        <input
-          type="date"
-          id="deadline_date"
-          value={deadline_date}
-          onChange={(e) => setDeadline_date(e.target.value)}
-        />
-         <button type="submit" id="creat-button" onClick={handleSubmit}>
-          Добавить
-        </button>
-      </form>
+      <div className="deadline_form">
+        <div className="left-column">
+          <form className="form">
+            <div>
+              Дедлайны:
+            </div>
+            <div>
+              <label htmlFor="fromDate">С:</label>
+              <input
+                type="date"
+                id="fromDate"
+                value={fromDate}
+                onChange={(e) => setFromDate(e.target.value)}
+              />
 
-      <form>
-        <label htmlFor="fromDate">С:</label>
-        <input
-          type="date"
-          id="fromDate"
-          value={fromDate}
-          onChange={(e) => setFromDate(e.target.value)}
-        />
-        <label htmlFor="toDate">По:</label>
-        <input
-          type="date"
-          id="toDate"
-          value={toDate}
-          onChange={(e) => setToDate(e.target.value)}
-        />
-        <button type="button" id="show-button" onClick={handleFilter}>
-          Показать
-        </button>
-      </form>
+              <label htmlFor="toDate">По:</label>
+              <input
+                type="date"
+                id="toDate"
+                value={toDate}
+                onChange={(e) => setToDate(e.target.value)}
+              />
+            </div>
+            
+            <div>
+              <button type="button" id="show-button" onClick={handleFilter}>
+                Показать
+              </button>
+            </div>
+          </form>
+        </div>
+        <div className="right-column">
+          <form className="form">
+            <div>
+              Добавить дедлайн:
+            </div> 
 
-      <ul>
-        {showDeadlines.map((deadline) => (
-          <li key={deadline.subject}>
-            {deadline.subject} - {deadline.deadline_date}
-          </li>
-        ))}
-      </ul>
-    </div>
+            <div>
+              <label htmlFor="subject">Предмет:</label>
+              <input
+                type="text"
+                id="subject"
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}
+              />
+            
+              <label htmlFor="deadline">Дедлайн:</label>
+              <input
+                type="date"
+                id="deadline_date"
+                value={deadline_date}
+                onChange={(e) => setDeadline_date(e.target.value)}
+              />
+            </div>
+
+            <div>
+              <button type="submit" id="creat-button" onClick={handleSubmit}>
+                Добавить
+              </button>
+            </div>
+          
+          </form>
+        </div>
+      </div>
+
+        <ul>
+          {showDeadlines.map((deadline) => (
+            <li key={deadline.subject} className="text_deadline">
+              {deadline.subject} - {deadline.deadline_date}
+            </li>
+          ))}
+        </ul>
+    </>
   );
 };
 
